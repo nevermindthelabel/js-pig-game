@@ -36,7 +36,11 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 document.querySelector('.btn-hold').addEventListener('click', function () {
   scores[activePlayer] += roundScore;
   document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
-  nextPlayer();
+  if (scores[activePlayer] >= 100) {
+    alert('game over');
+  } else {
+    nextPlayer();
+  }
 });
 
 function nextPlayer() {
