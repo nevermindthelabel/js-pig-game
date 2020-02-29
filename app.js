@@ -20,7 +20,7 @@ document.getElementById('score-1').textContent = '0';
 document.getElementById('current-0').textContent = '0';
 document.getElementById('current-1').textContent = '0';
 
-document.querySelector('.btn-roll').addEventListener('click', function(){
+document.querySelector('.btn-roll').addEventListener('click', function () {
   let dice = Math.floor(Math.random() * 6) + 1;
   let diceDom = document.querySelector('.dice');
   diceDom.style.display = 'block';
@@ -37,4 +37,9 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     document.querySelector(`.player-1-panel`).classList.toggle('active');
     document.querySelector('.dice').style.display = 'none';
   }
+});
+
+document.querySelector('.btn-hold').addEventListener('click', function () {
+  scores[activePlayer] += roundScore;
+  document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
 });
