@@ -19,7 +19,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     let diceDom = document.querySelector('.dice');
     diceDom.style.display = 'block';
     diceDom.src = `dice-${dice}.png`;
-    if (dice > 1) {
+    if (dice !== 1) {
       roundScore += dice;
       document.querySelector(`#current-${activePlayer}`).textContent = roundScore;
     } else {
