@@ -10,6 +10,7 @@ GAME RULES:
 */
 
 let gamePlaying = true;
+let lastRoll = null;
 
 init();
 
@@ -19,14 +20,18 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     let diceDom = document.querySelector('.dice');
     diceDom.style.display = 'block';
     diceDom.src = `dice-${dice}.png`;
-    if (dice !== 1) {
+    if(dice === 6 && lastRoll === 6) {
+      scores[activePlayer] = 0;
+      document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
+      nextPlayer();
+    }else if (dice !== 1) {
       roundScore += dice;
       document.querySelector(`#current-${activePlayer}`).textContent = roundScore;
     } else {
       nextPlayer();
     }
+    lastRoll = dice;
   }
-
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function () {
