@@ -155,16 +155,20 @@ i {
   top: 467px;
 }
 
-input,
-label {
+input {
   position: absolute;
   width: 150px;
   left: 50%;
   transform: translateX(-50%);
+  top: 510px;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 450;
 }
 
-#targetScore {
-  top: 100px;
+#targetScore:focus {
+  outline: none;
 }
 
 #submitButton {
