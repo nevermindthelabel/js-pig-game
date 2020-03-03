@@ -11,6 +11,7 @@ GAME RULES:
 
 let gamePlaying = true;
 let lastRoll = null;
+let targetScore = null;
 
 init();
 
@@ -72,6 +73,8 @@ function init() {
   document.querySelector(`.player-0-panel`).classList.add('active');
   document.querySelector(`.player-1-panel`).classList.remove('winner');
   document.querySelector(`.player-1-panel`).classList.remove('active');
+  document.getElementById('targetScore').value = targetScore;
+  console.log(targetScore);
 };
 
 function nextPlayer() {
