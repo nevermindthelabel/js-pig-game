@@ -22,6 +22,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     let dice1 = Math.floor(Math.random() * 6) + 1;
     let diceDom = document.getElementById('dice1');
     let diceDom1 = document.getElementById('dice2');
+    displayDice();
     diceDom.style.display = 'block';
     diceDom1.style.display = 'block';
     diceDom.src = `dice-${dice}.png`;
@@ -55,8 +56,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
 
     if (scores[activePlayer] >= winningScore) {
       document.querySelector(`#name-${activePlayer}`).textContent = 'Winner!!!!!';
-      document.getElementById('dice1').style.display = 'none';
-      document.getElementById('dice2').style.display = 'none';
+      hideDice();
       document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
       document.querySelector(`.player-${activePlayer}-panel`).classList.remove('active');
       document.querySelector('.btn-roll').style.display = 'none';
@@ -68,6 +68,8 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
   }
 });
 
+document.querySelector('.btn-new').addEventListener('click', init);
+
 function init() {
   scores = [0, 0];
   activePlayer = 0;
@@ -76,8 +78,6 @@ function init() {
 
   document.querySelector('.btn-roll').style.display = 'block';
   document.querySelector('.btn-hold').style.display = 'block';
-  document.getElementById('dice1').style.display = 'none';
-  document.getElementById('dice2').style.display = 'none';
   document.getElementById('score-0').textContent = '0';
   document.getElementById('score-1').textContent = '0';
   document.getElementById('current-0').textContent = '0';
@@ -89,6 +89,7 @@ function init() {
   document.querySelector(`.player-0-panel`).classList.add('active');
   document.querySelector(`.player-1-panel`).classList.remove('winner');
   document.querySelector(`.player-1-panel`).classList.remove('active');
+  hideDice();
 };
 
 function nextPlayer() {
@@ -98,8 +99,15 @@ function nextPlayer() {
   document.getElementById('current-1').textContent = '0';
   document.querySelector(`.player-0-panel`).classList.toggle('active');
   document.querySelector(`.player-1-panel`).classList.toggle('active');
-  document.getElementById('dice1').style.display = 'none';
-  document.getElementById('dice2').style.display = 'none';
+  hideDice();
 };
 
-document.querySelector('.btn-new').addEventListener('click', init);
+function hideDice() {
+  document.getElementById('dice1').style.display = 'none';
+  document.getElementById('dice2').style.display = 'none';
+}
+
+function displayDice() {
+  document.getElementById('dice1').style.display = 'block';
+  document.getElementById('dice2').style.display = 'block';
+}
